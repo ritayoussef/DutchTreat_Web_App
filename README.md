@@ -35,7 +35,7 @@ The **DutchTreat** application is an ASP.NET Core MVC web application designed t
 ### 🛠 Prerequisites
 
 - Visual Studio 2022
-- .NET 6 SDK
+- .NET 8 SDK
 - SQL Server or LocalDB
 - SendGrid API Key (or Gmail API for email sending)
 
