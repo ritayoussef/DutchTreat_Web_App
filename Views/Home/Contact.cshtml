@@ -1,0 +1,78 @@
+﻿@model DutchTreat.Models.ContactModel
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<h1 style="background-color:dodgerblue; color:white">@ViewBag.Header</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Contact">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostalCode" class="control-label"></label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Topic" class="control-label"></label>
+                <select asp-for="Topic" asp-items="ViewBag.Topics" class="form-control">
+                    <option value="">Select Topic</option>
+                </select>
+                <span asp-validation-for="Topic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QorC" class="control-label"></label>
+                <textarea asp-for="QorC" class="form-control"></textarea>
+                <span asp-validation-for="QorC" class="text-danger"></span>
+            </div>
+    @*         documentation to add 2 buttons next to each other
+            https://www.geeksforgeeks.org/how-to-place-two-input-box-next-to-each-other-using-bootstrap-4/ *@
+            <div class="form-group">
+                <input type="reset" value="Reset" class="btn btn-primary" />
+                <span class="input-group-btn"
+                      style="width:1px;"></span>
+                <input type="submit" id="submitButton" value="Submit" class="btn btn-primary" disabled />
+            </div>
+            <form action="" method="POST">
+                <div class="g-recaptcha" data-sitekey="6LfdJ20qAAAAAAFQyuQpNQd8A5-o_K-TL3K31MSJ" data-callback="enableSubmitButton"></div>
+                <br />
+            </form>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function enableSubmitButton() {
+            document.getElementById('submitButton').disabled = false; 
+        }
+    </script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

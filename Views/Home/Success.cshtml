@@ -1,0 +1,18 @@
+﻿@using System.Globalization
+@model DutchTreat.Models.ContactModel
+
+@{
+    ViewData["Title"] = "Success";
+
+    /*Documentation: https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-globalization-cultureinfo & ChatGPT for better formatting*/
+    var date = DateTime.Now.ToString("D", new CultureInfo("en-CA"));
+    var time = DateTime.Now.ToString("hh:mm:ss tt");
+}
+
+<h1 style="background-color:seagreen; color:white">Contact Form Success</h1>
+
+<div>
+    <h3>Thank you @Model.FirstName @Model.LastName</h3>
+    <hr />
+    <p>A copy has been sent to @Model.Email on @date @time</p>
+</div>

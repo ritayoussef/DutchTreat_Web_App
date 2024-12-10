@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DutchTreat.Data.Entities.Product>
+
+@{
+    ViewData["Title"] = "Shop";
+}
+
+<h1>Shop</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <div class="border bd-light rounded p-1">
+
+                <img src="~/img/@(item.ArtId).jpg" class="img-fluid" alt="@item.Title" />
+                <h3>@item.Category @item.Size</h3>
+                <ul>
+                    <li>Price: @item.Price.ToString("c")</li>
+                    <li>Artist: @item.Artist</li>
+                    <li>Title: @item.Title</li>
+                    <li>Description: @item.ArtDescription</li>
+                </ul>
+                <button id="buyButton" class="btn btn-success">Buy</button>
+            </div>
+        </div>
+    }
+</div>
